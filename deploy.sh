@@ -19,13 +19,14 @@ npm run build
 
 # Modified build script
 git checkout pages
-git add dist/* -f
-#git commit -m 'deploy'
+cd dist
+git add . -f
+git commit -m 'deploy'
 
 # if you are deploying to https://<USERNAME>.github.io
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-#git push origin pages
+git push origin pages
 
 git checkout master
