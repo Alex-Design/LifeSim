@@ -7,19 +7,25 @@ set -e
 npm run build
 
 # navigate into the build output directory
-cd dist
+#cd dist
 
 # if you are deploying to a custom domain
 # echo 'www.example.com' > CNAME
 
-git init
-git add -A
-git commit -m 'deploy'
+#git init
+#git checkout -b master
+#git add -A
+#git commit -m 'deploy'
+
+# Modified build script
+git checkout pages
+git add dist/* -f
+#git commit -m 'deploy'
 
 # if you are deploying to https://<USERNAME>.github.io
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push -f https://github.com/Alex-Design/LifeSim master:pages
+#git push origin pages
 
-cd -
+git checkout master
