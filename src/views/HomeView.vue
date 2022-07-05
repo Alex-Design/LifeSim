@@ -1,9 +1,9 @@
 <script setup>
-import TheWelcome from "@/components/TheWelcome.vue";
+import CharacterStats from "@/components/CharacterStats.vue";
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <CharacterStats></CharacterStats>
   </main>
 </template>

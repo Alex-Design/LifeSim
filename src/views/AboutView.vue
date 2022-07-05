@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <WelcomeItem></WelcomeItem>
   </div>
 </template>
 
@@ -13,3 +13,9 @@
   }
 }
 </style>
+<script>
+import WelcomeItem from  "@/components/WelcomeItem.vue";
+export default {
+  components: { WelcomeItem },
+}
+</script>
