@@ -33,11 +33,13 @@ export default {
     },
     loadData() {
       let retrievedObject = localStorage.getItem("global-state");
-      console.log(retrievedObject);
-      let retrievedObjectParsed = JSON.parse(retrievedObject);
-      loadData(retrievedObjectParsed);
-      console.log(globalState);
-      this.$forceUpdate();
+      if (retrievedObject) {
+        console.log(retrievedObject);
+        let retrievedObjectParsed = JSON.parse(retrievedObject);
+        loadData(retrievedObjectParsed);
+        console.log(globalState);
+        this.$forceUpdate();
+      }
     },
   },
 };
