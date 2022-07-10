@@ -4,7 +4,7 @@
 import globalState from "../globalState";
 import { loadGlobalData, startGame } from "../globalState";
 import shopItems from "../shopItems";
-import { loadShopItems, startGameResetShopItems } from "../shopItems";
+import { startGameResetShopItems } from "../shopItems";
 
 export default {
   // Properties returned from data() become reactive state
@@ -23,7 +23,7 @@ export default {
   // They can be bound as event listeners in templates.
   methods: {
     saveData() {
-      localStorage.setItem("global-state", JSON.stringify(this.gameState));
+      localStorage.setItem("global-state", JSON.stringify(globalState));
       localStorage.getItem("global-state");
     },
     loadData() {
@@ -34,6 +34,8 @@ export default {
       }
     },
     startNewGame() {
+      localStorage.removeItem("global-state");
+      localStorage.removeItem("shop-state");
       startGame();
       startGameResetShopItems();
       this.saveData();

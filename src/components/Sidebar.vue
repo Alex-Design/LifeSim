@@ -1,6 +1,6 @@
 <script setup>
 import Briefcase1SVG from "../assets/svg/briefcase-1.svg";
-import Briefcase2SVG from "../assets/svg/briefcase-2.svg";
+// import Briefcase2SVG from "../assets/svg/briefcase-2.svg";
 import CalendarSVG from "../assets/svg/calendar.svg";
 import CoinsSVG from "../assets/svg/coins.svg";
 import HomeSVG from "../assets/svg/home.svg";
@@ -27,10 +27,6 @@ export default {
   // Methods are functions that mutate state and trigger updates.
   // They can be bound as event listeners in templates.
   methods: {
-    purchaseItem() {
-      globalState.money -= 10;
-      this.saveData();
-    },
     saveData() {
       localStorage.setItem("global-state", JSON.stringify(globalState));
       localStorage.getItem("global-state");
@@ -65,17 +61,17 @@ export default {
       </a>
       <ul class="space-y-2">
         <li>
-          <a
-            href="#"
-            class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+          <RouterLink
+              to="/character"
+              class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
           >
             <PersonSVG class="sidebar-icon" />
-            <span class="ml-3"><RouterLink to="/">Character</RouterLink></span>
-          </a>
+            <span class="flex-1 ml-3 whitespace-nowrap">Character</span>
+          </RouterLink>
         </li>
         <li>
           <RouterLink
-            to="/shop"
+            to="/home"
             class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
           >
             <HomeSVG class="sidebar-icon" />

@@ -6,16 +6,16 @@ let globalDataStart = {
     hunger: 100,
     thirst: 100,
     tiredness: 100,
-    wellbeing: 100,
-    comfort: 100,
     cleanliness: 100,
-    visuals: 100,
-    satisfaction: 100,
-    happiness: 100,
+    comfort: 0,
+    visuals: 0,
+    wellbeing: 0,
+    satisfaction: 0,
+    happiness: 0,
   },
   home: {
-    kitchen: {
-    },
+    kitchen: {},
+    bedroom: {},
   },
 };
 
@@ -25,16 +25,16 @@ const globalData = reactive({
     hunger: 100,
     thirst: 100,
     tiredness: 100,
-    wellbeing: 100,
-    comfort: 100,
     cleanliness: 100,
-    visuals: 100,
-    satisfaction: 100,
-    happiness: 100,
+    comfort: 0,
+    visuals: 0,
+    wellbeing: 0,
+    satisfaction: 0,
+    happiness: 0,
   },
   home: {
-    kitchen: {
-    },
+    kitchen: {},
+    bedroom: {},
   },
 });
 

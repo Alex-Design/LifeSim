@@ -71,7 +71,10 @@ export default {
         {{ globalState.character.money }}</span
       >
     </div>
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-10">
+    <div
+      v-for="shopItemHomeLocation in Object.keys(shopItems.home)"
+      class="relative overflow-x-auto shadow-md sm:rounded-lg mb-10"
+    >
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead
           class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
@@ -90,138 +93,55 @@ export default {
         </thead>
         <tbody>
           <tr
+            v-for="(shopItem, shopItemItemName) in shopItems.home[
+              shopItemHomeLocation
+            ]"
             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
           >
             <th
               scope="row"
               class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
             >
-              Small Fridge
+              {{ shopItem.name }}
             </th>
-            <td class="px-6 py-4">White</td>
-            <td class="px-6 py-4">Hunger +1</td>
-            <td class="px-6 py-4">-</td>
-            <td class="px-6 py-4">-</td>
-            <td class="px-6 py-4">300</td>
+            <td class="px-6 py-4">{{ shopItem.color }}</td>
+            <td class="px-6 py-4">
+              <span v-if="shopItem.hasOwnProperty('benefit1')">
+                {{ shopItem.benefit1.stat }}
+                +{{ shopItem.benefit1.quantity }}
+              </span>
+              <span v-else>-</span>
+            </td>
+            <td class="px-6 py-4">
+              <span v-if="shopItem.hasOwnProperty('benefit2')">
+                {{ shopItem.benefit2.stat }}
+                +{{ shopItem.benefit2.quantity }}
+              </span>
+              <span v-else>-</span>
+            </td>
+            <td class="px-6 py-4">
+              <span v-if="shopItem.hasOwnProperty('benefit3')">
+                {{ shopItem.benefit3.stat }}
+                +{{ shopItem.benefit3.quantity }}
+              </span>
+              <span v-else>-</span>
+            </td>
+            <td class="px-6 py-4">{{ shopItem.base_price }}</td>
             <td class="px-6 py-4 text-right">
               <button
+                v-if="shopItem.shop_stock >= 1"
                 v-on:click="
-                  purchaseItem('home', 'kitchen', 'small_microwave', 300)
+                  purchaseItem(
+                    'home',
+                    shopItemHomeLocation,
+                    shopItemItemName,
+                    shopItem.base_price
+                  )
                 "
               >
                 Buy
               </button>
-            </td>
-          </tr>
-          <tr
-            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-          >
-            <th
-              scope="row"
-              class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-            >
-              Small Microwave
-            </th>
-            <td class="px-6 py-4">White</td>
-            <td class="px-6 py-4">Hunger +1</td>
-            <td class="px-6 py-4">-</td>
-            <td class="px-6 py-4">-</td>
-            <td class="px-6 py-4">50</td>
-            <td class="px-6 py-4 text-right">
-              <button v-on:click="purchaseItem(50)">Buy</button>
-            </td>
-          </tr>
-          <tr
-            class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600"
-          >
-            <th
-              scope="row"
-              class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-            >
-              Basic Gas Cooker
-            </th>
-            <td class="px-6 py-4">White</td>
-            <td class="px-6 py-4">Hunger +1</td>
-            <td class="px-6 py-4">-</td>
-            <td class="px-6 py-4">-</td>
-            <td class="px-6 py-4">400</td>
-            <td class="px-6 py-4 text-right">
-              <button v-on:click="purchaseItem(400)">Buy</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead
-          class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
-        >
-          <tr>
-            <th scope="col" class="px-6 py-3">Product name</th>
-            <th scope="col" class="px-6 py-3">Color</th>
-            <th scope="col" class="px-6 py-3">Benefit 1</th>
-            <th scope="col" class="px-6 py-3">Benefit 2</th>
-            <th scope="col" class="px-6 py-3">Benefit 3</th>
-            <th scope="col" class="px-6 py-3">Price</th>
-            <th scope="col" class="px-6 py-3">
-              <span class="sr-only">Edit</span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-          >
-            <th
-              scope="row"
-              class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-            >
-              Small Fridge
-            </th>
-            <td class="px-6 py-4">White</td>
-            <td class="px-6 py-4">Hunger +1</td>
-            <td class="px-6 py-4">-</td>
-            <td class="px-6 py-4">-</td>
-            <td class="px-6 py-4">300</td>
-            <td class="px-6 py-4 text-right">
-              <button v-on:click="purchaseItem(300)">Buy</button>
-            </td>
-          </tr>
-          <tr
-            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-          >
-            <th
-              scope="row"
-              class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-            >
-              Small Microwave
-            </th>
-            <td class="px-6 py-4">White</td>
-            <td class="px-6 py-4">Hunger +1</td>
-            <td class="px-6 py-4">-</td>
-            <td class="px-6 py-4">-</td>
-            <td class="px-6 py-4">50</td>
-            <td class="px-6 py-4 text-right">
-              <button v-on:click="purchaseItem(50)">Buy</button>
-            </td>
-          </tr>
-          <tr
-            class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600"
-          >
-            <th
-              scope="row"
-              class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-            >
-              Basic Gas Cooker
-            </th>
-            <td class="px-6 py-4">White</td>
-            <td class="px-6 py-4">Hunger +1</td>
-            <td class="px-6 py-4">-</td>
-            <td class="px-6 py-4">-</td>
-            <td class="px-6 py-4">400</td>
-            <td class="px-6 py-4 text-right">
-              <button v-on:click="purchaseItem(400)">Buy</button>
+              <button v-else class="disabled">Sold Out</button>
             </td>
           </tr>
         </tbody>

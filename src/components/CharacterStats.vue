@@ -44,13 +44,13 @@ export default {
     <br />
     Tiredness: {{ state.character.tiredness }}
     <br />
-    Wellbeing: {{ state.character.wellbeing }}
+    Cleanliness: {{ state.character.cleanliness }}
     <br />
     Comfort: {{ state.character.comfort }}
     <br />
-    Cleanliness: {{ state.character.cleanliness }}
-    <br />
     Visuals: {{ state.character.visuals }}
+    <br />
+    Wellbeing: {{ state.character.wellbeing }}
     <br />
     Satisfaction: {{ state.character.satisfaction }}
     <br />
