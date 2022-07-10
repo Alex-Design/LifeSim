@@ -6,8 +6,7 @@ let globalData = {
 };
 
 export default reactive(globalData);
-export function loadData(data) {
+export function loadGlobalData(data) {
     globalData.money = data.money;
     globalData.health = data.health;
-    console.log(globalData);
 }

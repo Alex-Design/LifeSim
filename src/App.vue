@@ -1,54 +1,55 @@
 <link rel="stylesheet" href="assets/base.css">
 <script setup>
 import {RouterLink, RouterView} from "vue-router";
+import NavigationBar from "@/components/NavigationBar.vue";
+import Sidebar from "@/components/Sidebar.vue";
 </script>
 
-<!--<script>-->
-<!--export default {-->
-<!--  // Properties returned from data() become reactive state-->
-<!--  // and will be exposed on `this`.-->
-<!--  data() {-->
-<!--    return {-->
-<!--      count: 0,-->
-<!--    };-->
-<!--  },-->
+<script>
+import globalState, {loadGlobalData} from "./globalState";
 
-<!--  // Methods are functions that mutate state and trigger updates.-->
-<!--  // They can be bound as event listeners in templates.-->
-<!--  methods: {-->
-<!--    increment() {-->
-<!--      this.count++;-->
-<!--    },-->
-<!--  },-->
+export default {
+  // Properties returned from data() become reactive state
+  // and will be exposed on `this`.
+  data() {
+    return {
+      state: globalState,
+    };
+  },
+  mounted() {
+    this.loadData();
+  },
 
-<!--  // Lifecycle hooks are called at different stages-->
-<!--  // of a component's lifecycle.-->
-<!--  // This function will be called when the component is mounted.-->
-<!--  mounted() {-->
-<!--    console.log(`The initial count is ${this.count}.`);-->
-<!--  },-->
-<!--};-->
-<!--</script>-->
+  // Methods are functions that mutate state and trigger updates.
+  // They can be bound as event listeners in templates.
+  methods: {
+    saveData() {
+      localStorage.setItem("global-state", JSON.stringify(globalState));
+      localStorage.getItem("global-state");
+    },
+    loadData() {
+      let retrievedObject = localStorage.getItem("global-state");
+      if (retrievedObject) {
+        let retrievedObjectParsed = JSON.parse(retrievedObject);
+        loadGlobalData(retrievedObjectParsed);
+        this.$forceUpdate();
+      }
+    },
+  },
+};
+</script>
 
 <template>
-  <!-- Sidebar -->
-  <div class="sidebar light-grey bar-block" style="width:200px">
-    <h3 class="bar-item">LifeSim</h3>
-    <RouterLink to="/" class="bar-item button">Character</RouterLink>
-    <RouterLink to="/shop" class="bar-item button">Shop</RouterLink>
-  </div>
+  <div>
+    <!-- Navbar -->
+    <NavigationBar></NavigationBar>
 
-  <!-- Page Content -->
-  <div style="margin-left: 200px;">
-
-    <div class="container banner">
-      <h1>Stats Here</h1>
-    </div>
-
-    <div class="container">
-      <h2>Test Text</h2>
-      <!-- Displays based on what is selected in RouterLink -->
-      <RouterView />
+    <!-- Sidebar -->
+    <div class="flex">
+      <Sidebar></Sidebar>
+      <main class="flex-1 ml-12 mt-12 mr-12 mb-12">
+        <RouterView></RouterView>
+      </main>
     </div>
   </div>
 </template>

@@ -10,7 +10,7 @@ export default {
   // and will be exposed on `this`.
   data() {
     return {
-      health: globalState.health,
+      state: globalState,
     };
   },
 
@@ -32,5 +32,7 @@ export default {
 </script>
 
 <template>
-  Health: {{health}}
+  Health: {{state.health}}
+  <br />
+  Money: {{state.money}}
 </template>
