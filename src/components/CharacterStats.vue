@@ -1,9 +1,8 @@
-<script setup>
-</script>
+<script setup></script>
 
 <script>
 import globalState from "../globalState";
-globalState.health = 50;
+// globalState.wellbeing = 50;
 
 export default {
   // Properties returned from data() become reactive state
@@ -11,6 +10,7 @@ export default {
   data() {
     return {
       state: globalState,
+      id: 0,
     };
   },
 
@@ -26,13 +26,40 @@ export default {
   // of a component's lifecycle.
   // This function will be called when the component is mounted.
   mounted() {
-    // console.log(`The initial count is ${this.count}.`);
+    console.log(`initial hunger is ${this.state.hunger}.`);
+    this.emitter.on("new-game", () => {
+      console.log("a");
+      // this.$forceUpdate();
+      this.id++;
+      console.log(this.id);
+    });
   },
 };
 </script>
 
 <template>
-  Health: {{state.health}}
-  <br />
-  Money: {{state.money}}
+  <div :key="id">
+    {{ state }}
+    <br />
+    Money: {{ state.money }}
+    <br />
+    Hunger: {{ state.hunger }}
+    <br />
+    Thirst: {{ state.thirst }}
+    <br />
+    Tiredness: {{ state.tiredness }}
+    <br />
+    Wellbeing: {{ state.wellbeing }}
+    <br />
+    Comfort: {{ state.comfort }}
+    <br />
+    Cleanliness: {{ state.cleanliness }}
+    <br />
+    Visuals: {{ state.visuals }}
+    <br />
+    Satisfaction: {{ state.satisfaction }}
+    <br />
+    Happiness: {{ state.happiness }}
+    <br />
+  </div>
 </template>

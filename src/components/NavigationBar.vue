@@ -2,7 +2,7 @@
 
 <script>
 import globalState from "../globalState";
-import { loadGlobalData } from "../globalState";
+import { loadGlobalData, startGame } from "../globalState";
 
 export default {
   // Properties returned from data() become reactive state
@@ -10,6 +10,7 @@ export default {
   data() {
     return {
       state: globalState,
+      id: 0,
     };
   },
   mounted() {
@@ -35,6 +36,13 @@ export default {
         this.$forceUpdate();
       }
     },
+    startNewGame() {
+      startGame();
+      this.saveData();
+      this.loadData();
+      this.emitter.emit("new-game");
+      // this.id++;
+    },
   },
 };
 </script>
@@ -43,6 +51,7 @@ export default {
   <!-- Navbar -->
   <nav
     class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800"
+    :key="id"
   >
     <div class="container flex flex-wrap justify-between items-center mx-auto">
       <a href="https://flowbite.com/" class="flex items-center">
@@ -97,11 +106,12 @@ export default {
               >
             </li>
             <li>
-              <a
-                href="#"
+              <button
+                v-on:click="startNewGame()"
                 class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >Earnings</a
               >
+                Earnings
+              </button>
             </li>
           </ul>
         </div>

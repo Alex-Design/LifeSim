@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="assets/base.css">
 <script setup>
-import {RouterLink, RouterView} from "vue-router";
+import {RouterView} from "vue-router";
 import NavigationBar from "@/components/NavigationBar.vue";
 import Sidebar from "@/components/Sidebar.vue";
 </script>
