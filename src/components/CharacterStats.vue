@@ -2,7 +2,6 @@
 
 <script>
 import globalState from "../globalState";
-// globalState.wellbeing = 50;
 
 export default {
   // Properties returned from data() become reactive state
@@ -27,18 +26,12 @@ export default {
   // This function will be called when the component is mounted.
   mounted() {
     console.log(`initial hunger is ${this.state.hunger}.`);
-    this.emitter.on("new-game", () => {
-      console.log("a");
-      // this.$forceUpdate();
-      this.id++;
-      console.log(this.id);
-    });
   },
 };
 </script>
 
 <template>
-  <div :key="id">
+  <div >
     {{ state }}
     <br />
     Money: {{ state.money }}

@@ -13,7 +13,7 @@ let globalDataStart = {
   happiness: 100,
 };
 
-let globalData = {
+const globalData = reactive({
   money: 100,
   hunger: 100,
   thirst: 100,
@@ -24,7 +24,7 @@ let globalData = {
   visuals: 100,
   satisfaction: 100,
   happiness: 100,
-};
+});
 
 export function loadGlobalData(data) {
   globalData.money = data.money;
@@ -50,4 +50,4 @@ export function startGame() {
   globalData.satisfaction = globalDataStart.satisfaction;
   globalData.happiness = globalDataStart.happiness;
 }
-export default reactive(globalData);
+export default globalData;

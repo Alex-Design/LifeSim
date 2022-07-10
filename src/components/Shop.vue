@@ -15,9 +15,9 @@ export default {
   },
   mounted() {
     this.loadData();
-    this.emitter.on("new-game", () => {
-      this.id++;
-    });
+    // this.emitter.on("new-game", () => {
+    //   this.id++;
+    // });
   },
 
   // Methods are functions that mutate state and trigger updates.
