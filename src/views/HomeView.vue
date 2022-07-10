@@ -1,9 +1,9 @@
 <script setup>
-import CharacterStats from "@/components/CharacterStats.vue";
+import FurnitureList from "@/components/FurnitureList.vue";
 </script>
 
 <template>
   <main>
-    <CharacterStats></CharacterStats>
+    <FurnitureList></FurnitureList>
   </main>
 </template>

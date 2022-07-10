@@ -3,9 +3,9 @@ import { reactive } from "vue";
 let globalDataStart = {
   character: {
     money: 100,
-    hunger: 100,
-    thirst: 100,
-    tiredness: 100,
+    fullness: 100,
+    hydration: 100,
+    energy: 100,
     cleanliness: 100,
     comfort: 0,
     visuals: 0,
@@ -22,9 +22,9 @@ let globalDataStart = {
 const globalData = reactive({
   character: {
     money: 100,
-    hunger: 100,
-    thirst: 100,
-    tiredness: 100,
+    fullness: 100,
+    hydration: 100,
+    energy: 100,
     cleanliness: 100,
     comfort: 0,
     visuals: 0,

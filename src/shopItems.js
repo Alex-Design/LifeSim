@@ -7,7 +7,7 @@ const shopItems = reactive({
         name: "Small Microwave",
         color: "white",
         benefit1: {
-          stat: "hunger",
+          stat: "fullness",
           quantity: 1,
         },
         base_price: 50,
@@ -18,7 +18,7 @@ const shopItems = reactive({
         name: "Small Fridge",
         color: "white",
         benefit1: {
-          stat: "hunger",
+          stat: "fullness",
           quantity: 1,
         },
         base_price: 200,
@@ -29,7 +29,7 @@ const shopItems = reactive({
         name: "Small Sink",
         color: "white",
         benefit1: {
-          stat: "thirst",
+          stat: "hydration",
           quantity: 1,
         },
         base_price: 100,
@@ -42,7 +42,7 @@ const shopItems = reactive({
         name: "Single Bed",
         color: "white",
         benefit1: {
-          stat: "tiredness",
+          stat: "energy",
           quantity: 2,
         },
         benefit2: {
@@ -57,7 +57,7 @@ const shopItems = reactive({
         name: "Double Bed",
         color: "white",
         benefit1: {
-          stat: "tiredness",
+          stat: "energy",
           quantity: 3,
         },
         benefit2: {

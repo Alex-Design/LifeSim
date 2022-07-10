@@ -24,7 +24,7 @@ export default {
   // of a component's lifecycle.
   // This function will be called when the component is mounted.
   mounted() {
-    console.log(`initial hunger is ${this.state.character.hunger}.`);
+    console.log(`initial fullness is ${this.state.character.fullness}.`);
   },
 };
 </script>
@@ -38,11 +38,11 @@ export default {
     <br />
     Money: {{ state.character.money }}
     <br />
-    Hunger: {{ state.character.hunger }}
+    fullness: {{ state.character.fullness }}
     <br />
-    Thirst: {{ state.character.thirst }}
+    hydration: {{ state.character.hydration }}
     <br />
-    Tiredness: {{ state.character.tiredness }}
+    energy: {{ state.character.energy }}
     <br />
     Cleanliness: {{ state.character.cleanliness }}
     <br />
