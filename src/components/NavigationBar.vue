@@ -15,6 +15,9 @@ export default {
   },
   mounted() {
     this.loadData();
+    this.emitter.on("new-game", () => {
+      this.$forceUpdate();
+    });
   },
 
   // Methods are functions that mutate state and trigger updates.
@@ -41,7 +44,6 @@ export default {
       this.saveData();
       this.loadData();
       this.emitter.emit("new-game");
-      // this.id++;
     },
   },
 };
