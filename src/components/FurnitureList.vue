@@ -1,7 +1,7 @@
 <script setup></script>
 
 <script>
-import globalState, {loadGlobalData} from "../globalState";
+import globalState, { loadGlobalData } from "../globalState";
 import shopItems from "../shopItems";
 
 export default {
@@ -82,7 +82,7 @@ export default {
               <th scope="col" class="px-6 py-3">Benefit 1</th>
               <th scope="col" class="px-6 py-3">Benefit 2</th>
               <th scope="col" class="px-6 py-3">Benefit 3</th>
-<!--              <th scope="col" class="px-6 py-3">Price</th>-->
+              <!--              <th scope="col" class="px-6 py-3">Price</th>-->
               <th scope="col" class="px-6 py-3">
                 <span class="sr-only">Edit</span>
               </th>
@@ -90,9 +90,7 @@ export default {
           </thead>
           <tbody>
             <tr
-              v-for="(item, itemName) in state.home[
-                itemLocation
-              ]"
+              v-for="(item, itemName) in state.home[itemLocation]"
               class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
             >
               <th
@@ -123,7 +121,7 @@ export default {
                 </span>
                 <span v-else>-</span>
               </td>
-<!--              <td class="px-6 py-4">{{ item.base_price }}</td>-->
+              <!--              <td class="px-6 py-4">{{ item.base_price }}</td>-->
               <td class="px-6 py-4 text-right">
                 <button
                   v-if="item.character_owned >= 1"
@@ -137,32 +135,37 @@ export default {
           </tbody>
         </table>
       </div>
+      <div v-else>
+        <span>No furniture here</span>
+        <br />
+        <br />
+      </div>
     </div>
 
-<!--    Current Game State:-->
-<!--    <br />-->
-<!--    {{ state }}-->
-<!--    <br />-->
-<!--    <br />-->
-<!--    Money: {{ state.character.money }}-->
-<!--    <br />-->
-<!--    fullness: {{ state.character.fullness }}-->
-<!--    <br />-->
-<!--    hydration: {{ state.character.hydration }}-->
-<!--    <br />-->
-<!--    energy: {{ state.character.energy }}-->
-<!--    <br />-->
-<!--    Cleanliness: {{ state.character.cleanliness }}-->
-<!--    <br />-->
-<!--    Comfort: {{ state.character.comfort }}-->
-<!--    <br />-->
-<!--    Visuals: {{ state.character.visuals }}-->
-<!--    <br />-->
-<!--    Wellbeing: {{ state.character.wellbeing }}-->
-<!--    <br />-->
-<!--    Satisfaction: {{ state.character.satisfaction }}-->
-<!--    <br />-->
-<!--    Happiness: {{ state.character.happiness }}-->
-<!--    <br />-->
+    <!--    Current Game State:-->
+    <!--    <br />-->
+    <!--    {{ state }}-->
+    <!--    <br />-->
+    <!--    <br />-->
+    <!--    Money: {{ state.character.money }}-->
+    <!--    <br />-->
+    <!--    fullness: {{ state.character.fullness }}-->
+    <!--    <br />-->
+    <!--    hydration: {{ state.character.hydration }}-->
+    <!--    <br />-->
+    <!--    energy: {{ state.character.energy }}-->
+    <!--    <br />-->
+    <!--    Cleanliness: {{ state.character.cleanliness }}-->
+    <!--    <br />-->
+    <!--    Comfort: {{ state.character.comfort }}-->
+    <!--    <br />-->
+    <!--    Visuals: {{ state.character.visuals }}-->
+    <!--    <br />-->
+    <!--    Wellbeing: {{ state.character.wellbeing }}-->
+    <!--    <br />-->
+    <!--    Satisfaction: {{ state.character.satisfaction }}-->
+    <!--    <br />-->
+    <!--    Happiness: {{ state.character.happiness }}-->
+    <!--    <br />-->
   </div>
 </template>

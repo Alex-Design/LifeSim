@@ -33,16 +33,16 @@ export default {
   <div >
     Current Game State:
     <br />
-    {{ state }}
+<!--    {{ state }}-->
     <br />
     <br />
     Money: {{ state.character.money }}
     <br />
-    fullness: {{ state.character.fullness }}
+    Fullness: {{ state.character.fullness }}
     <br />
-    hydration: {{ state.character.hydration }}
+    Hydration: {{ state.character.hydration }}
     <br />
-    energy: {{ state.character.energy }}
+    Energy: {{ state.character.energy }}
     <br />
     Cleanliness: {{ state.character.cleanliness }}
     <br />
