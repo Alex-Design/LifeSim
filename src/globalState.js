@@ -49,6 +49,5 @@ export function startGame() {
   globalData.visuals = globalDataStart.visuals;
   globalData.satisfaction = globalDataStart.satisfaction;
   globalData.happiness = globalDataStart.happiness;
-  globalData = globalDataStart;
 }
 export default reactive(globalData);
