@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/css/base.css">
 <script setup>
 import {RouterView} from "vue-router";
 import NavigationBar from "@/components/NavigationBar.vue";
@@ -55,5 +55,5 @@ export default {
 </template>
 
 <style>
-@import "@/assets/base.css";
+@import "@/assets/css/base.css";
 </style>

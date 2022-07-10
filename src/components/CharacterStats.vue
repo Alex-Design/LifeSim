@@ -9,7 +9,6 @@ export default {
   data() {
     return {
       state: globalState,
-      id: 0,
     };
   },
 
@@ -25,34 +24,37 @@ export default {
   // of a component's lifecycle.
   // This function will be called when the component is mounted.
   mounted() {
-    console.log(`initial hunger is ${this.state.hunger}.`);
+    console.log(`initial hunger is ${this.state.character.hunger}.`);
   },
 };
 </script>
 
 <template>
   <div >
+    Current Game State:
+    <br />
     {{ state }}
     <br />
-    Money: {{ state.money }}
     <br />
-    Hunger: {{ state.hunger }}
+    Money: {{ state.character.money }}
     <br />
-    Thirst: {{ state.thirst }}
+    Hunger: {{ state.character.hunger }}
     <br />
-    Tiredness: {{ state.tiredness }}
+    Thirst: {{ state.character.thirst }}
     <br />
-    Wellbeing: {{ state.wellbeing }}
+    Tiredness: {{ state.character.tiredness }}
     <br />
-    Comfort: {{ state.comfort }}
+    Wellbeing: {{ state.character.wellbeing }}
     <br />
-    Cleanliness: {{ state.cleanliness }}
+    Comfort: {{ state.character.comfort }}
     <br />
-    Visuals: {{ state.visuals }}
+    Cleanliness: {{ state.character.cleanliness }}
     <br />
-    Satisfaction: {{ state.satisfaction }}
+    Visuals: {{ state.character.visuals }}
     <br />
-    Happiness: {{ state.happiness }}
+    Satisfaction: {{ state.character.satisfaction }}
+    <br />
+    Happiness: {{ state.character.happiness }}
     <br />
   </div>
 </template>

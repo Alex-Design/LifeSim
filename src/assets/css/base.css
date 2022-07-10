@@ -177,3 +177,9 @@ h2 {
 h3 {
     font-size: 32px !important;
 }
+
+.sidebar-icon {
+    height: 25px;
+    width: 25px;
+    fill: rgb(156 163 175);
+}

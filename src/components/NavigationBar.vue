@@ -3,13 +3,16 @@
 <script>
 import globalState from "../globalState";
 import { loadGlobalData, startGame } from "../globalState";
+import shopItems from "../shopItems";
+import { loadShopItems, startGameResetShopItems } from "../shopItems";
 
 export default {
   // Properties returned from data() become reactive state
   // and will be exposed on `this`.
   data() {
     return {
-      state: globalState,
+      gameState: globalState,
+      shopState: shopItems,
     };
   },
   mounted() {
@@ -19,12 +22,8 @@ export default {
   // Methods are functions that mutate state and trigger updates.
   // They can be bound as event listeners in templates.
   methods: {
-    purchaseItem() {
-      globalState.money -= 10;
-      this.saveData();
-    },
     saveData() {
-      localStorage.setItem("global-state", JSON.stringify(globalState));
+      localStorage.setItem("global-state", JSON.stringify(this.gameState));
       localStorage.getItem("global-state");
     },
     loadData() {
@@ -32,15 +31,13 @@ export default {
       if (retrievedObject) {
         let retrievedObjectParsed = JSON.parse(retrievedObject);
         loadGlobalData(retrievedObjectParsed);
-
       }
     },
     startNewGame() {
       startGame();
+      startGameResetShopItems();
       this.saveData();
       this.loadData();
-      //this.emitter.emit("new-game");
-      // this.id++;
     },
   },
 };
@@ -48,12 +45,12 @@ export default {
 
 <template>
   <!-- Navbar -->
+
   <nav
     class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800"
-    
   >
     <div class="container flex flex-wrap justify-between items-center mx-auto">
-      <a href="https://flowbite.com/" class="flex items-center">
+      <a href="/" class="flex items-center">
         <img
           src="/LifeSimLogo.png"
           class="mr-3 h-6 sm:h-9"
@@ -79,6 +76,15 @@ export default {
         <div
           class="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
           id="dropdown"
+          style="
+            position: absolute;
+            inset: auto auto 0px 0px;
+            margin: 0px;
+            transform: translate3d(1051px, 1085.5px, 0px);
+          "
+          data-popper-reference-hidden=""
+          data-popper-escaped=""
+          data-popper-placement="top"
         >
           <div class="py-3 px-4">
             <span class="block text-sm text-gray-900 dark:text-white"
@@ -102,6 +108,13 @@ export default {
                 href="#"
                 class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                 >Settings</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                >Earnings</a
               >
             </li>
             <li>

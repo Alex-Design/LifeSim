@@ -1,53 +1,57 @@
 import { reactive } from "vue";
 
 let globalDataStart = {
-  money: 100,
-  hunger: 100,
-  thirst: 100,
-  tiredness: 100,
-  wellbeing: 100,
-  comfort: 100,
-  cleanliness: 100,
-  visuals: 100,
-  satisfaction: 100,
-  happiness: 100,
+  character: {
+    money: 100,
+    hunger: 100,
+    thirst: 100,
+    tiredness: 100,
+    wellbeing: 100,
+    comfort: 100,
+    cleanliness: 100,
+    visuals: 100,
+    satisfaction: 100,
+    happiness: 100,
+  },
+  home: {
+    kitchen: {
+    },
+  },
 };
 
 const globalData = reactive({
-  money: 100,
-  hunger: 100,
-  thirst: 100,
-  tiredness: 100,
-  wellbeing: 100,
-  comfort: 100,
-  cleanliness: 100,
-  visuals: 100,
-  satisfaction: 100,
-  happiness: 100,
+  character: {
+    money: 100,
+    hunger: 100,
+    thirst: 100,
+    tiredness: 100,
+    wellbeing: 100,
+    comfort: 100,
+    cleanliness: 100,
+    visuals: 100,
+    satisfaction: 100,
+    happiness: 100,
+  },
+  home: {
+    kitchen: {
+    },
+  },
 });
 
+// Load data from localstorage
 export function loadGlobalData(data) {
-  globalData.money = data.money;
-  globalData.hunger = data.hunger;
-  globalData.thirst = data.thirst;
-  globalData.tiredness = data.tiredness;
-  globalData.wellbeing = data.wellbeing;
-  globalData.comfort = data.comfort;
-  globalData.cleanliness = data.cleanliness;
-  globalData.visuals = data.visuals;
-  globalData.satisfaction = data.satisfaction;
-  globalData.happiness = data.happiness;
+  let props = Object.keys(data);
+  for (let property in props) {
+    globalData[props[property]] = data[props[property]];
+  }
 }
+
+// Reset all data to what it should be at the start of a new game
 export function startGame() {
-  globalData.money = globalDataStart.money;
-  globalData.hunger = globalDataStart.hunger;
-  globalData.thirst = globalDataStart.thirst;
-  globalData.tiredness = globalDataStart.tiredness;
-  globalData.wellbeing = globalDataStart.wellbeing;
-  globalData.comfort = globalDataStart.comfort;
-  globalData.cleanliness = globalDataStart.cleanliness;
-  globalData.visuals = globalDataStart.visuals;
-  globalData.satisfaction = globalDataStart.satisfaction;
-  globalData.happiness = globalDataStart.happiness;
+  let props = Object.keys(globalDataStart);
+  for (let property in props) {
+    globalData[props[property]] = globalDataStart[props[property]];
+  }
 }
+
 export default globalData;
