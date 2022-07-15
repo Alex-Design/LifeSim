@@ -4,7 +4,7 @@ import CoinsSVG from "../assets/svg/coins.svg";
 
 <script>
 import globalState, { loadGlobalData } from "../globalState";
-import jobs from "../jobs";
+import activities from "../activities";
 
 export default {
   // Properties returned from data() become reactive state
@@ -12,7 +12,7 @@ export default {
   data() {
     return {
       state: globalState,
-      jobs: jobs,
+      activities: activities,
     };
   },
 
@@ -31,21 +31,19 @@ export default {
         this.$forceUpdate();
       }
     },
-    applyToJob(jobSector, jobLevel, jobData) {
-      // apply to job
-
-      console.log(jobSector, jobLevel, jobData);
-
-      globalState.character.job = {
-        sector: jobSector,
-        level: jobLevel,
-        job_data: jobData,
-      };
-
-      this.saveData();
-    },
-    attendJob(jobData, hours) {
-      globalState.character.money += jobData.pay_per_hour * hours;
+    performActivity(activity) {
+      for (let i = 1; i <= Object.keys(activity.effects).length; i++) {
+        if (activity.effects.hasOwnProperty(i)) {
+          if (activity.effects[i].effect === "+") {
+            globalState.character[activity.effects[i].stat] +=
+              activity.effects[i].quantity;
+          } else {
+            globalState.character[activity.effects[i].stat] -=
+              activity.effects[i].quantity;
+          }
+        }
+      }
+      globalState.character.money -= activity.cost;
       this.saveData();
     },
     capitalize: function (value) {
@@ -66,83 +64,8 @@ export default {
 
 <template>
   <div>
-    <CoinsSVG class="sidebar-icon" /><span>
-      {{ state.character.money }}</span
-    >
-    <div v-if="state.character.job === null">
-      <div v-for="(jobsInSector, jobSector) in jobs">
-        <div v-if="jobsInSector !== null">
-          {{ capitalize(jobSector) }}
-          <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-10">
-            <table
-              class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
-            >
-              <thead
-                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
-              >
-                <tr>
-                  <th scope="col" class="px-6 py-3">Job name</th>
-                  <th scope="col" class="px-6 py-3">Pay/hour</th>
-                  <th scope="col" class="px-6 py-3">Requirement 1</th>
-                  <th scope="col" class="px-6 py-3">Requirement 2</th>
-                  <th scope="col" class="px-6 py-3">Requirement 3</th>
-                  <!--              <th scope="col" class="px-6 py-3">Price</th>-->
-                  <th scope="col" class="px-6 py-3">
-                    <span class="sr-only">Apply</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  v-for="(jobData, jobLevel) in jobsInSector"
-                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-                >
-                  <th
-                    scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-                  >
-                    {{ jobData.title }}
-                  </th>
-                  <td class="px-6 py-4">
-                    {{ jobData.pay_per_hour }}
-                  </td>
-                  <td class="px-6 py-4">
-                    <!--                <span v-if="item.hasOwnProperty('benefit1')">-->
-                    <!--                  {{ item.benefit1.stat }}-->
-                    <!--                  +{{ item.benefit1.quantity }}-->
-                    <!--                </span>-->
-                    <!--                <span v-else>-</span>-->
-                  </td>
-                  <td class="px-6 py-4">
-                    <!--                <span v-if="item.hasOwnProperty('benefit2')">-->
-                    <!--                  {{ item.benefit2.stat }}-->
-                    <!--                  +{{ item.benefit2.quantity }}-->
-                    <!--                </span>-->
-                    <!--                <span v-else>-</span>-->
-                  </td>
-                  <td class="px-6 py-4">
-                    <!--                <span v-if="item.hasOwnProperty('benefit3')">-->
-                    <!--                  {{ item.benefit3.stat }}-->
-                    <!--                  +{{ item.benefit3.quantity }}-->
-                    <!--                </span>-->
-                    <!--                <span v-else>-</span>-->
-                  </td>
-                  <!--              <td class="px-6 py-4">{{ item.base_price }}</td>-->
-                  <td class="px-6 py-4 text-right">
-                    <button
-                      v-on:click="applyToJob(jobSector, jobLevel, jobData)"
-                    >
-                      Apply
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div v-else>
+    <CoinsSVG class="sidebar-icon" /><span> {{ state.character.money }}</span>
+    <div>
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-10">
         <table
           class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
@@ -151,47 +74,52 @@ export default {
             class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
           >
             <tr>
-              <th scope="col" class="px-6 py-3">Job name</th>
-              <th scope="col" class="px-27 py-3">Pay/hour</th>
-              <th scope="col" class="px-6 py-3">Attend for...</th>
-              <th scope="col" class="px-6 py-3"></th>
-              <th scope="col" class="px-6 py-3"></th>
+              <th scope="col" class="px-6 py-3">Activity Name</th>
+              <th scope="col" class="px-6 py-3">Price/hour</th>
+              <th scope="col" class="px-6 py-3">Effect 1</th>
+              <th scope="col" class="px-6 py-3">Effect 2</th>
+              <th scope="col" class="px-6 py-3">Effect 3</th>
+              <!--              <th scope="col" class="px-6 py-3">Price</th>-->
               <th scope="col" class="px-6 py-3">
-                <span class="sr-only">Action</span>
+                <span class="sr-only">Apply</span>
               </th>
             </tr>
           </thead>
           <tbody>
             <tr
+              v-for="activity in activities"
               class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
             >
               <th
                 scope="row"
                 class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
               >
-                {{ state.character.job.job_data.title }}
+                {{ activity.name }}
               </th>
               <td class="px-6 py-4">
-                {{ state.character.job.job_data.pay_per_hour }}
+                {{ activity.cost }}
               </td>
-              <td class="px-6 py-4">
-                <button v-on:click="attendJob(state.character.job.job_data, 2)">
-                  2 Hours
-                </button>
+              <td class="px-6 py-4" v-if="activity.effects.hasOwnProperty(1)">
+                {{ activity.effects[1].stat }} {{ activity.effects[1].effect }}{{ activity.effects[1].quantity }}
               </td>
-              <td class="px-6 py-4">
-                <button v-on:click="attendJob(state.character.job.job_data, 6)">
-                  4 Hours
-                </button>
+              <td class="px-6 py-4" v-else>
+                -
               </td>
-              <td class="px-6 py-4">
-                <button v-on:click="attendJob(state.character.job.job_data, 8)">
-                  8 Hours
-                </button>
+              <td class="px-6 py-4" v-if="activity.effects.hasOwnProperty(2)">
+                {{ activity.effects[2].stat }} {{ activity.effects[2].effect }}{{ activity.effects[2].quantity }}
+              </td>
+              <td class="px-6 py-4" v-else>
+                -
+              </td>
+              <td class="px-6 py-4" v-if="activity.effects.hasOwnProperty(3)">
+                {{ activity.effects[3].stat }} {{ activity.effects[3].effect }}{{ activity.effects[3].quantity }}
+              </td>
+              <td class="px-6 py-4" v-else>
+                -
               </td>
               <td class="px-6 py-4 text-right">
-                <button v-on:click="attendJob(state.character.job.job_data, 10)">
-                  10 Hours
+                <button v-on:click="performActivity(activity)">
+                  Perform
                 </button>
               </td>
             </tr>

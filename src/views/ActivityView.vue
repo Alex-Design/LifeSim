@@ -1,7 +1,7 @@
 <script setup>
-import JobList from "@/components/JobList.vue";
+import ActivityList from "@/components/ActivityList.vue";
 </script>
 
 <template>
-  <JobList></JobList>
+  <ActivityList></ActivityList>
 </template>
