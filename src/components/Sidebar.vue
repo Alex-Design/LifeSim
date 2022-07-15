@@ -1,6 +1,5 @@
 <script setup>
 import Briefcase1SVG from "../assets/svg/briefcase-1.svg";
-// import Briefcase2SVG from "../assets/svg/briefcase-2.svg";
 import CalendarSVG from "../assets/svg/calendar.svg";
 import CoinsSVG from "../assets/svg/coins.svg";
 import HomeSVG from "../assets/svg/home.svg";

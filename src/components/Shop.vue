@@ -1,5 +1,4 @@
 <script setup>
-import CoinsSVG from "../assets/svg/coins.svg";
 </script>
 
 <script>
@@ -66,11 +65,6 @@ export default {
 
 <template>
   <div>
-    <div>
-      <CoinsSVG class="sidebar-icon" /><span>
-        {{ globalState.character.money }}</span
-      >
-    </div>
     <div
       v-for="shopItemHomeLocation in Object.keys(shopItems.home)"
       class="relative overflow-x-auto shadow-md sm:rounded-lg mb-10"

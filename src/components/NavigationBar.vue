@@ -102,11 +102,11 @@ export default {
         >
           <div class="py-3 px-4">
             <span class="block text-sm text-gray-900 dark:text-white"
-              >Bonnie Green</span
+              >Support:</span
             >
             <span
               class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400"
-              >name@lifesim.com</span
+              >FutureDiscordLink</span
             >
           </div>
           <ul class="py-1" aria-labelledby="dropdown">
@@ -114,21 +114,7 @@ export default {
               <a
                 href="#"
                 class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >Dashboard</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                 >Settings</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >Earnings</a
               >
             </li>
             <li>

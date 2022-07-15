@@ -1,5 +1,4 @@
 <script setup>
-import CoinsSVG from "../assets/svg/coins.svg";
 </script>
 
 <script>
@@ -64,7 +63,6 @@ export default {
 
 <template>
   <div>
-    <CoinsSVG class="sidebar-icon" /><span> {{ state.character.money }}</span>
     <div>
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-10">
         <table

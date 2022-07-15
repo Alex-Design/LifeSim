@@ -1,5 +1,4 @@
 <script setup>
-import CoinsSVG from "../assets/svg/coins.svg";
 </script>
 
 <script>
@@ -66,9 +65,6 @@ export default {
 
 <template>
   <div>
-    <CoinsSVG class="sidebar-icon" /><span>
-      {{ state.character.money }}</span
-    >
     <div v-if="state.character.job === null">
       <div v-for="(jobsInSector, jobSector) in jobs">
         <div v-if="jobsInSector !== null">
