@@ -1,4 +1,16 @@
-<script setup></script>
+<script setup>
+import CoinsSVG from "../assets/svg/coins.svg";
+import Briefcase1SVG from "../assets/svg/briefcase-1.svg";
+import ArtSVG from "../assets/svg/art.svg";
+import ChairSVG from "../assets/svg/chair.svg";
+import DrinkSVG from "../assets/svg/drink.svg";
+import FoodSVG from "../assets/svg/food.svg";
+import HealthSVG from "../assets/svg/health.svg";
+import IslandSVG from "../assets/svg/island.svg";
+import ShowerSVG from "../assets/svg/shower.svg";
+import SleepSVG from "../assets/svg/sleep.svg";
+import SmileSVG from "../assets/svg/smile.svg";
+</script>
 
 <script>
 import globalState from "../globalState";
@@ -80,8 +92,8 @@ export default {
           id="dropdown"
           style="
             position: absolute;
-            inset: auto auto 0px 0px;
-            margin: 0px;
+            inset: auto auto 0 0;
+            margin: 0;
             transform: translate3d(1051px, 1085.5px, 0px);
           "
           data-popper-reference-hidden=""
@@ -173,40 +185,91 @@ export default {
           class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium"
         >
           <li>
-            <a
-              href="#"
-              class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
-              aria-current="page"
-              >Home</a
+            <CoinsSVG class="sidebar-icon"></CoinsSVG>
+            <span
+              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
             >
+              {{ gameState.character.money }}
+            </span>
           </li>
           <li>
-            <a
-              href="#"
-              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >About</a
+            <Briefcase1SVG class="sidebar-icon" />
+            <div
+              v-if="
+                gameState.character.hasOwnProperty('job') &&
+                gameState.character.job !== null
+              "
             >
+              <span
+                v-if="gameState.character.job.hasOwnProperty('job_data')"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                >{{ gameState.character.job.job_data.title }}
+              </span>
+            </div>
+            <span v-else> No Job </span>
           </li>
           <li>
-            <a
-              href="#"
+            <FoodSVG class="sidebar-icon"></FoodSVG>
+            <span
               class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >Services</a
-            >
+              >{{ gameState.character.fullness }}
+            </span>
           </li>
           <li>
-            <a
-              href="#"
+            <DrinkSVG class="sidebar-icon"></DrinkSVG>
+            <span
               class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >Pricing</a
-            >
+              >{{ gameState.character.hydration }}
+            </span>
           </li>
           <li>
-            <a
-              href="#"
+            <SleepSVG class="sidebar-icon"></SleepSVG>
+            <span
               class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >Contact</a
-            >
+              >{{ gameState.character.energy }}
+            </span>
+          </li>
+          <li>
+            <ShowerSVG class="sidebar-icon"></ShowerSVG>
+            <span
+              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              >{{ gameState.character.cleanliness }}
+            </span>
+          </li>
+          <li>
+            <ChairSVG class="sidebar-icon"></ChairSVG>
+            <span
+              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              >{{ gameState.character.comfort }}
+            </span>
+          </li>
+          <li>
+            <ArtSVG class="sidebar-icon"></ArtSVG>
+            <span
+              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              >{{ gameState.character.visuals }}
+            </span>
+          </li>
+          <li>
+            <HealthSVG class="sidebar-icon"></HealthSVG>
+            <span
+              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              >{{ gameState.character.wellbeing }}
+            </span>
+          </li>
+          <li>
+            <IslandSVG class="sidebar-icon"></IslandSVG>
+            <span
+              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              >{{ gameState.character.satisfaction }}
+            </span>
+          </li>
+          <li>
+            <SmileSVG class="sidebar-icon"></SmileSVG>
+            <span
+              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              >{{ gameState.character.happiness }}
+            </span>
           </li>
         </ul>
       </div>

@@ -183,3 +183,11 @@ h3 {
     width: 25px;
     fill: rgb(156 163 175);
 }
+
+.gradient-bar {
+    /* Created with https://www.css-gradient.com */
+    background: #FAA55A;
+    background: -webkit-linear-gradient(top left, #FAA55A, #42DFDE);
+    background: -moz-linear-gradient(top left, #FAA55A, #42DFDE);
+    background: linear-gradient(to bottom right, #FAA55A, #42DFDE);
+}
