@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import CharacterView from "../views/CharacterView.vue";
 import ShopView from "../views/ShopView.vue";
+import JobView from "../views/JobView.vue";
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -26,6 +27,16 @@ const router = createRouter({
       path: "/shop",
       name: "shop",
       component: ShopView,
+    },
+    {
+      path: "/job",
+      name: "job",
+      component: JobView,
+    },
+    {
+      path: "/activities",
+      name: "activities",
+      component: JobView,
     },
   ],
 });

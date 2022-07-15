@@ -30,10 +30,10 @@ export default {
 </script>
 
 <template>
-  <div >
+  <div>
     Current Game State:
     <br />
-<!--    {{ state }}-->
+    {{ state }}
     <br />
     <br />
     Money: {{ state.character.money }}

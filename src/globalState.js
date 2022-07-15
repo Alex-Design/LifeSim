@@ -2,6 +2,7 @@ import { reactive } from "vue";
 
 let globalDataStart = {
   character: {
+    job: null,
     money: 100,
     fullness: 100,
     hydration: 100,
@@ -21,6 +22,10 @@ let globalDataStart = {
 
 const globalData = reactive({
   character: {
+    job: {
+      job_sector: "programming",
+      job_level: 2,
+    },
     money: 100,
     fullness: 100,
     hydration: 100,

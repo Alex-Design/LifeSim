@@ -2,7 +2,6 @@
 
 <script>
 import globalState, { loadGlobalData } from "../globalState";
-import shopItems from "../shopItems";
 
 export default {
   // Properties returned from data() become reactive state
@@ -10,7 +9,6 @@ export default {
   data() {
     return {
       state: globalState,
-      shopItems: shopItems,
     };
   },
 

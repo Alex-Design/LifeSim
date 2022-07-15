@@ -89,7 +89,7 @@ export default {
         </li>
         <li>
           <RouterLink
-            to="/shop"
+            to="/job"
             class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
           >
             <Briefcase1SVG class="sidebar-icon" />
@@ -98,7 +98,7 @@ export default {
         </li>
         <li>
           <RouterLink
-            to="/shop"
+            to="/activities"
             class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
           >
             <TennisSVG class="sidebar-icon" />
