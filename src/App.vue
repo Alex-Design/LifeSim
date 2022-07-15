@@ -17,6 +17,7 @@ export default {
     };
   },
   mounted() {
+    document.documentElement.classList.add('dark');
     this.loadData();
   },
 
