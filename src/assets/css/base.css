@@ -191,3 +191,12 @@ h3 {
     background: -moz-linear-gradient(top left, #FAA55A, #42DFDE);
     background: linear-gradient(to bottom right, #FAA55A, #42DFDE);
 }
+
+#mobile-menu-2 {
+    text-align: center;
+}
+
+#mobile-menu-2 svg {
+    margin-left: auto;
+    margin-right: auto;
+}
