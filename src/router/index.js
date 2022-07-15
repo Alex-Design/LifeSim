@@ -4,6 +4,7 @@ import CharacterView from "../views/CharacterView.vue";
 import ShopView from "../views/ShopView.vue";
 import JobView from "../views/JobView.vue";
 import ActivityView from "../views/ActivityView.vue";
+import EventsView from "../views/EventsView.vue";
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -38,6 +39,11 @@ const router = createRouter({
       path: "/activities",
       name: "activities",
       component: ActivityView,
+    },
+    {
+      path: "/events",
+      name: "events",
+      component: EventsView,
     },
   ],
 });

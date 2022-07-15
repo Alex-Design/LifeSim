@@ -61,8 +61,8 @@ export default {
       <ul class="space-y-2">
         <li>
           <RouterLink
-              to="/character"
-              class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+            to="/character"
+            class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
           >
             <PersonSVG class="sidebar-icon" />
             <span class="flex-1 ml-3 whitespace-nowrap">Character</span>
@@ -104,20 +104,19 @@ export default {
             <span class="flex-1 ml-3 whitespace-nowrap">Activities</span>
           </RouterLink>
         </li>
-      </ul>
-      <ul
-        class="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700"
-      >
         <li>
           <RouterLink
-            to="/shop"
+            to="/events"
             class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
           >
             <CalendarSVG class="sidebar-icon" />
-            <span class="flex-1 ml-3 whitespace-nowrap">Placeholder</span>
+            <span class="flex-1 ml-3 whitespace-nowrap">Events</span>
           </RouterLink>
         </li>
       </ul>
+      <ul
+        class="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700"
+      ></ul>
     </div>
   </div>
 </template>
