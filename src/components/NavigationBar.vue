@@ -17,6 +17,7 @@ import globalState from "../globalState";
 import { loadGlobalData, startGame } from "../globalState";
 import shopItems from "../shopItems";
 import { startGameResetShopItems } from "../shopItems";
+import { startGameResetEvents } from "../events";
 
 export default {
   // Properties returned from data() become reactive state
@@ -48,8 +49,10 @@ export default {
     startNewGame() {
       localStorage.removeItem("global-state");
       localStorage.removeItem("shop-state");
+      localStorage.removeItem("event-state");
       startGame();
       startGameResetShopItems();
+      startGameResetEvents();
       this.saveData();
       this.loadData();
     },
