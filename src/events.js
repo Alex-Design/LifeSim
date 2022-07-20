@@ -5,9 +5,15 @@ const currentEvents = reactive({});
 const allEvents = reactive({
   random_events: {
     prank_call: {
-      name: "Prank Call",
+      name: "Phone Call",
       chance: 1.0,
-      text: "You have been pranked!",
+      text: "There is a phone call waiting for you!",
+      eventFunction: "eventAnswerPrankCall()",
+    },
+    inheritance: {
+      name: "Inheritance",
+      chance: 1.0,
+      text: "You have inherited money!",
       eventFunction: null,
     },
   },
@@ -17,27 +23,21 @@ const allEvents = reactive({
 });
 
 export function generateRandomEvent() {
+  // TODO get one of the events randomly
   for (let randomEventId in allEvents.random_events) {
-    let props = Object.keys(allEvents["random_events"][randomEventId]);
-
-    currentEvents[randomEventId] = [];
-    for (let property in props) {
-      // console.log(allEvents["random_events"][randomEventId][props[property]]);
-      currentEvents[randomEventId][props[property]] = allEvents["random_events"][randomEventId][props[property]];
-
-    }
-
-    // console.log(currentEvents);
+    currentEvents[randomEventId] = {};
+    Object.assign(
+      currentEvents[randomEventId],
+      allEvents.random_events[randomEventId]
+    );
     break;
   }
 }
 
 // Load data from localstorage
 export function addToCurrentEvents(eventType, eventId) {
-  let props = Object.keys(allEvents[eventType][eventId]);
-  for (let property in props) {
-    currentEvents[props[property]] = allEvents[props[property]];
-  }
+  currentEvents[eventId] = {};
+  Object.assign(currentEvents[eventId], allEvents[eventType][eventId]);
 }
 
 export function removeFromCurrentEvents(eventId) {

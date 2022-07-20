@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "mitt": "^3.0.0",
+    "sweetalert2": "^11.4.23",
     "vue": "^3.2.37",
     "vue-router": "^4.0.16"
   },
